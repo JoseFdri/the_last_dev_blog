@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="site-container">
+
+        <header class="site-header">
+            <div class="wrapper">
+                <div class="site-title">
+                    <a href="{{ "/" | relative_url }}" class="title-link">
+                        <span class="prompt-symbol">$</span> {{ site.title }}<span class="blink-cursor">_</span>
+                    </a>
+                </div>
+
+                <nav class="site-nav">
+                    <div class="nav-items">
+                        <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ "/" | relative_url }}">~/home</a>
+                        <a class="nav-link {% if page.url == '/about/' %}active{% endif %}" href="{{ "/about" | relative_url }}">~/about</a>
+                        <a class="nav-link" href="{{ site.github_username | prepend: "https://github.com/" }}">github</a>
+                        {% if site.twitter_username %}
+                        <a class="nav-link" href="{{ site.twitter_username | prepend: "https://twitter.com/" }}">twitter</a>
+                        {% endif %}
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="page-content" aria-label="Content">
+            <div class="wrapper">
+                {{ content }}
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="wrapper">
+                <div class="footer-content">
+                    <div class="footer-terminal-hint">
+                        <span class="prompt-symbol">></span> EOF
+                    </div>
+                    <div class="footer-info">
+                        <p>{{ site.description | escape }}</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

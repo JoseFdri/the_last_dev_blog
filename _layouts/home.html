@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<div class="home">
+    <h1 class="page-heading">Recent Posts</h1>
+
+    {% if site.posts.size > 0 %}
+    <div class="posts-list">
+        {% for post in site.posts %}
+        <article class="post-item">
+            <header>
+                <h2 class="post-title">
+                    <a class="post-link" href="{{ post.url | relative_url }}">
+                        {{ post.title | escape }}
+                    </a>
+                </h2>
+                <div class="post-meta">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+                    {% if post.categories.size > 0 %}
+                    <span class="meta-separator">•</span>
+                    <span class="categories">{{ post.categories | join: ", " }}</span>
+                    {% endif %}
+                </div>
+            </header>
+            {% if post.excerpt %}
+            <div class="post-excerpt">
+                {{ post.excerpt | strip_html | truncate: 200 }}
+            </div>
+            {% endif %}
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-posts">No posts yet. Check back soon!</p>
+    {% endif %}
+
+    {% if site.paginate %}
+    <nav class="pagination">
+        {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link">← Newer</a>
+        {% endif %}
+        <span class="pagination-info">
+            Page {{ paginator.page }} of {{ paginator.total_pages }}
+        </span>
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link">Older →</a>
+        {% endif %}
+    </nav>
+    {% endif %}
+</div>

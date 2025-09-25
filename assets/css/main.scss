@@ -1,0 +1,698 @@
+---
+---
+
+// Color scheme - Dark terminal inspired
+$bg-primary: #0f111a;
+$bg-secondary: #1a1d29;
+$border-color: #2a2e3e;
+$text-primary: #e4e7eb;
+$text-secondary: #9ca3af;
+$accent-green: #10b981;
+$accent-cyan: #06b6d4;
+$accent-yellow: #f59e0b;
+$accent-purple: #8b5cf6;
+$link-color: #3b82f6;
+
+// Typography
+$font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+$font-display: 'Share Tech Mono', $font-mono;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: $bg-primary;
+    color: $text-primary;
+    font-family: $font-mono;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+// Header
+.site-header {
+    background: $bg-secondary;
+    border-bottom: 1px solid $border-color;
+    padding: 24px 0;
+}
+
+.site-title {
+    margin-bottom: 20px;
+
+    .title-link {
+        color: $text-primary;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: 600;
+        font-family: $font-display;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $accent-cyan;
+        }
+    }
+
+    .prompt-symbol {
+        color: $accent-green;
+        margin-right: 8px;
+    }
+
+    .blink-cursor {
+        animation: blink 1s infinite;
+        margin-left: 2px;
+    }
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+// Navigation
+.site-nav {
+    .nav-items {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        color: $text-secondary;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s ease;
+        position: relative;
+
+        &:hover {
+            color: $accent-cyan;
+        }
+
+        &.active {
+            color: $text-primary;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: $accent-green;
+            }
+        }
+    }
+}
+
+// Main Content
+.page-content {
+    flex: 1;
+    padding: 48px 0;
+}
+
+// Home Page
+.home {
+    .page-heading {
+        font-size: 28px;
+        margin-bottom: 32px;
+        color: $text-primary;
+        font-family: $font-display;
+    }
+
+    .posts-list {
+        margin-bottom: 48px;
+    }
+
+    .post-item {
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid $border-color;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .post-title {
+        font-size: 22px;
+        margin-bottom: 8px;
+
+        .post-link {
+            color: $text-primary;
+            text-decoration: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $accent-cyan;
+            }
+        }
+    }
+
+    .post-meta {
+        color: $text-secondary;
+        font-size: 13px;
+        margin-bottom: 12px;
+
+        time {
+            color: $accent-green;
+        }
+
+        .categories {
+            color: $accent-purple;
+        }
+
+        .meta-separator {
+            margin: 0 8px;
+            color: $border-color;
+        }
+    }
+
+    .post-excerpt {
+        color: $text-secondary;
+        line-height: 1.6;
+        margin-top: 12px;
+    }
+
+    .no-posts {
+        color: $text-secondary;
+        font-style: italic;
+        text-align: center;
+        padding: 48px 0;
+    }
+}
+
+// Post Styles
+.post {
+    .post-header {
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $border-color;
+    }
+
+    .post-title {
+        font-size: 36px;
+        margin-bottom: 12px;
+        color: $text-primary;
+        font-family: $font-display;
+        line-height: 1.2;
+    }
+
+    .post-meta {
+        color: $text-secondary;
+        font-size: 14px;
+
+        time {
+            color: $accent-green;
+        }
+
+        .author {
+            color: $accent-cyan;
+        }
+
+        .categories {
+            color: $accent-purple;
+        }
+
+        .meta-separator {
+            margin: 0 8px;
+            color: $border-color;
+        }
+    }
+
+    .post-content {
+        color: $text-primary;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $text-primary;
+            margin: 32px 0 16px;
+            font-family: $font-display;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 30px; }
+        h2 {
+            font-size: 26px;
+            color: $accent-cyan;
+        }
+        h3 {
+            font-size: 22px;
+            color: $accent-green;
+        }
+        h4 { font-size: 18px; }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: $link-color;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $accent-cyan;
+            }
+        }
+
+        code {
+            background: $bg-secondary;
+            color: $accent-yellow;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: $font-mono;
+        }
+
+        pre {
+            background: $bg-secondary;
+            border: 1px solid $border-color;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 24px 0;
+
+            code {
+                background: none;
+                color: $text-primary;
+                padding: 0;
+            }
+        }
+
+        blockquote {
+            border-left: 3px solid $accent-purple;
+            padding-left: 20px;
+            margin: 24px 0;
+            color: $text-secondary;
+            font-style: italic;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 30px;
+
+            li {
+                margin-bottom: 8px;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+
+            th {
+                background: $bg-secondary;
+                color: $accent-cyan;
+                padding: 10px;
+                text-align: left;
+                border: 1px solid $border-color;
+            }
+
+            td {
+                padding: 10px;
+                border: 1px solid $border-color;
+            }
+
+            tr:hover {
+                background: rgba(6, 182, 212, 0.05);
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 24px 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid $border-color;
+            margin: 32px 0;
+        }
+    }
+
+    .post-footer {
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid $border-color;
+    }
+}
+
+// Post Navigation
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    a {
+        color: $accent-green;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $accent-cyan;
+        }
+    }
+}
+
+// Page styles
+.page {
+    .page-header {
+        margin-bottom: 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $border-color;
+    }
+
+    .page-title {
+        font-size: 32px;
+        color: $text-primary;
+        font-family: $font-display;
+    }
+
+    .page-content {
+        color: $text-primary;
+
+        h2 {
+            color: $accent-cyan;
+            margin: 28px 0 16px;
+            font-size: 24px;
+        }
+
+        h3 {
+            color: $accent-green;
+            margin: 24px 0 12px;
+            font-size: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: $link-color;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+
+            &:hover {
+                color: $accent-cyan;
+            }
+        }
+
+        code {
+            background: $bg-secondary;
+            color: $accent-yellow;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: $bg-secondary;
+            border: 1px solid $border-color;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 20px 0;
+
+            code {
+                background: none;
+                color: $text-primary;
+                padding: 0;
+            }
+        }
+
+        ul, ol {
+            margin: 16px 0 16px 30px;
+
+            li {
+                margin-bottom: 8px;
+            }
+        }
+
+        blockquote {
+            border-left: 3px solid $accent-purple;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: $text-secondary;
+            font-style: italic;
+        }
+    }
+}
+
+// Footer
+.site-footer {
+    background: $bg-secondary;
+    border-top: 1px solid $border-color;
+    padding: 32px 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-terminal-hint {
+    color: $accent-green;
+    font-size: 12px;
+    margin-bottom: 16px;
+    font-family: $font-mono;
+
+    .prompt-symbol {
+        color: $accent-yellow;
+    }
+}
+
+.footer-info {
+    color: $text-secondary;
+    font-size: 13px;
+
+    p {
+        margin-bottom: 8px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.system-info {
+    color: $text-secondary;
+    font-size: 12px;
+}
+
+// Pagination
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin: 40px 0;
+    padding: 20px;
+    background: $bg-secondary;
+    border-radius: 6px;
+
+    .pagination-link {
+        color: $accent-green;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $accent-cyan;
+        }
+    }
+
+    .pagination-info {
+        color: $text-secondary;
+        font-size: 14px;
+    }
+}
+
+// RSS Subscribe
+.rss-subscribe {
+    margin-top: 40px;
+    text-align: center;
+
+    .rss-link {
+        color: $accent-yellow;
+        text-decoration: none;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: $bg-secondary;
+        border: 1px solid $border-color;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: $accent-yellow;
+        }
+
+        .prompt-symbol {
+            color: $accent-green;
+        }
+    }
+}
+
+// Syntax Highlighting
+.highlight {
+    background: $bg-secondary;
+
+    .c { color: $text-secondary; font-style: italic } // Comment
+    .err { color: #ff5555; } // Error
+    .k { color: $accent-purple; } // Keyword
+    .o { color: $accent-cyan } // Operator
+    .cm { color: $text-secondary; font-style: italic } // Comment.Multiline
+    .cp { color: $text-secondary; } // Comment.Preproc
+    .c1 { color: $text-secondary; font-style: italic } // Comment.Single
+    .cs { color: $text-secondary; font-style: italic } // Comment.Special
+    .gd { color: #ff5555; } // Generic.Deleted
+    .ge { font-style: italic } // Generic.Emph
+    .gh { color: $text-primary; font-weight: bold } // Generic.Heading
+    .gi { color: $accent-green; } // Generic.Inserted
+    .gp { color: $text-secondary; font-weight: bold } // Generic.Prompt
+    .gs { font-weight: bold } // Generic.Strong
+    .gu { color: $accent-cyan; font-weight: bold } // Generic.Subheading
+    .kc { color: $accent-purple; } // Keyword.Constant
+    .kd { color: $accent-purple; } // Keyword.Declaration
+    .kn { color: $accent-purple; } // Keyword.Namespace
+    .kp { color: $accent-purple; } // Keyword.Pseudo
+    .kr { color: $accent-purple; } // Keyword.Reserved
+    .kt { color: $accent-cyan; } // Keyword.Type
+    .m { color: $accent-yellow } // Literal.Number
+    .s { color: $accent-green } // Literal.String
+    .na { color: $accent-cyan } // Name.Attribute
+    .nb { color: $text-primary } // Name.Builtin
+    .nc { color: $accent-cyan; } // Name.Class
+    .no { color: #ff5555 } // Name.Constant
+    .nd { color: $accent-cyan; } // Name.Decorator
+    .ni { color: $text-primary; } // Name.Entity
+    .ne { color: #ff5555; } // Name.Exception
+    .nf { color: $accent-green; } // Name.Function
+    .nl { color: $text-primary; } // Name.Label
+    .nn { color: $text-primary; } // Name.Namespace
+    .nt { color: $accent-purple } // Name.Tag
+    .nv { color: $text-primary } // Name.Variable
+    .ow { color: $accent-purple; } // Operator.Word
+    .w { color: $text-primary } // Text.Whitespace
+    .mb { color: $accent-yellow } // Literal.Number.Bin
+    .mf { color: $accent-yellow } // Literal.Number.Float
+    .mh { color: $accent-yellow } // Literal.Number.Hex
+    .mi { color: $accent-yellow } // Literal.Number.Integer
+    .mo { color: $accent-yellow } // Literal.Number.Oct
+    .sa { color: $accent-green } // Literal.String.Affix
+    .sb { color: $accent-green } // Literal.String.Backtick
+    .sc { color: $accent-green } // Literal.String.Char
+    .dl { color: $accent-green } // Literal.String.Delimiter
+    .sd { color: $accent-green } // Literal.String.Doc
+    .s2 { color: $accent-green } // Literal.String.Double
+    .se { color: $accent-yellow } // Literal.String.Escape
+    .sh { color: $accent-green } // Literal.String.Heredoc
+    .si { color: $accent-yellow } // Literal.String.Interpol
+    .sx { color: $accent-green } // Literal.String.Other
+    .sr { color: $accent-green } // Literal.String.Regex
+    .s1 { color: $accent-green } // Literal.String.Single
+    .ss { color: $accent-green } // Literal.String.Symbol
+    .bp { color: $text-primary } // Name.Builtin.Pseudo
+    .fm { color: $accent-green; } // Name.Function.Magic
+    .vc { color: $text-primary } // Name.Variable.Class
+    .vg { color: $text-primary } // Name.Variable.Global
+    .vi { color: $text-primary } // Name.Variable.Instance
+    .vm { color: $text-primary } // Name.Variable.Magic
+    .il { color: $accent-yellow } // Literal.Number.Integer.Long
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 0 16px;
+    }
+
+    .site-header {
+        padding: 20px 0;
+    }
+
+    .site-title {
+        .title-link {
+            font-size: 20px;
+        }
+    }
+
+    .site-nav {
+        .nav-items {
+            gap: 16px;
+        }
+    }
+
+    .post {
+        .post-title {
+            font-size: 28px;
+        }
+    }
+
+    .home {
+        .page-heading {
+            font-size: 24px;
+        }
+
+        .post-title {
+            font-size: 20px;
+        }
+    }
+
+    .page-content {
+        padding: 32px 0;
+    }
+
+    .post-navigation {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+// Utility classes
+.prompt-symbol {
+    color: $accent-green;
+    font-weight: 600;
+}
+
+// Focus styles for accessibility
+a:focus,
+button:focus {
+    outline: 2px solid $accent-cyan;
+    outline-offset: 2px;
+}
+
+// Selection styles
+::selection {
+    background: rgba(6, 182, 212, 0.3);
+    color: $text-primary;
+}
+
+::-moz-selection {
+    background: rgba(6, 182, 212, 0.3);
+    color: $text-primary;
+}
