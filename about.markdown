@@ -6,35 +6,25 @@ permalink: /about/
 
 ## $ whoami
 
-A software engineer navigating the digital frontier, one commit at a time. This blog is my personal space where I share thoughts on:
+Software Engineer based in Auckland, New Zealand. Full stack software engineer with a proven track record of designing scalable architectures, identity providers, optimizing engineering workflows, and leading teams to deliver high-quality solutions.
 
-- **Code Architecture** - Building scalable systems that don't break at 3 AM
-- **AI & Machine Learning** - Teaching machines to think, hoping they stay friendly
-- **Terminal Life** - Because real devs live in the command line
-- **Open Source** - Contributing back to the community that raised me
-- **Tech Philosophy** - Questioning whether we should, not just whether we can
+I'm passionate about using AI to do more with less time and love building products and developer tools. One of the tools I created is [cooljsontools.dev](https://cooljsontools.dev) - check it out!
 
-## $ cat stack.txt
 
-```bash
-Languages:    [Python, JavaScript, Rust, Go]
-Frameworks:   [React, Node.js, FastAPI, TensorFlow]
-Tools:        [Docker, K8s, Git, Vim, tmux]
-Interests:    [Distributed Systems, DevOps, Security, Automation]
-```
 
 ## $ echo $CONTACT
 
 Feel free to reach out:
-- **GitHub**: [@yourusername](https://github.com/yourusername)
-- **Email**: your.email@example.com
-- **GPG Key**: `0xDEADBEEF`
+- **GitHub**: [@JoseFdri](https://github.com/JoseFdri)
+- **LinkedIn**: [jose-rodriguez-g](https://www.linkedin.com/in/jose-rodriguez-g/)
+- **X/Twitter**: [@jrodriguexg](https://x.com/jrodriguexg)
+- **Email**: josefernaguillen@gmail.com
 
 ## $ tail philosophy.log
 
-> "The best code is no code at all. The second best is code that writes itself."
+> "AI isn't here to replace developers - it's here to augment our capabilities."
 
-Currently exploring the intersection of AI and software development, building tools that make developers' lives easier, and occasionally writing about it here.
+Currently exploring how AI can revolutionize software development workflows, building tools that enhance developer productivity, and sharing insights on scaling systems that serve hundreds of thousands of users.
 
 ```bash
 $ exit
