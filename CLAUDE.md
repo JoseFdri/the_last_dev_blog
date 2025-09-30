@@ -12,9 +12,9 @@ Jekyll is a Ruby-based static site generator that transforms Markdown files into
 
 ### Run the development server
 ```bash
-bundle exec jekyll serve
+bundle exec jekyll serve --baseurl ""
 ```
-This starts a local server at http://localhost:4000 with auto-regeneration enabled.
+This starts a local server at http://localhost:4000 with auto-regeneration enabled. The `--baseurl ""` flag is required for local development since the site is configured for GitHub Pages deployment.
 
 ### Build the site without serving
 ```bash

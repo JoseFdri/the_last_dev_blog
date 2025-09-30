@@ -27,7 +27,7 @@ My tool of choice is **Claude Code**. I've been using it for a while and have co
 ### Understanding Context
 
 Every time we start a session in Claude, the root `claude.md` file is loaded into the context. If you run `/context`, you will see something like this:
-![context](/assets/images/claude_context.png)
+![context]({{ "/assets/images/claude_context.png" | relative_url }})
 
 **Memory files** include your `claude.md` files plus any other file you load into the context. **Messages** are the chat history; if you've been working on a feature for a while, the agent will have all the context of what has been discussed and what has been done.
 
@@ -43,7 +43,7 @@ Selecting the right context is crucial. Strategies for managing context are impo
 
 Run `/init` to ask Claude to generate a `claude.md` file for your project. Additionally, you can have `claude.md` files in subdirectories for specific modules, libraries, components, services, or repositories. This allows you to load only the context files needed for the tasks Claude is performing without obscuring the main context file. For example, if Claude is reading or writing files in a services directory, it will load the `claude.md` file in that directory.
 
-![sub directory contexts](/assets/images/sub_directory_contexts.png)
+![sub directory contexts]({{ "/assets/images/sub_directory_contexts.png" | relative_url }})
 
 ### Lazy Load Context
 
@@ -61,7 +61,7 @@ If the task is related to API, read api_documentation.md
 
 Create a file system for your main agent and sub-agents to have memory files for each task performed. This is similar to how humans work: when we do something, we remember the process and what we learned, which helps us avoid repeating mistakes and improve performance.
 
-![agents file system](/assets/images/agents_system.png)
+![agents file system]({{ "/assets/images/agents_system.png" | relative_url }})
 
 **Examples:**
 
@@ -88,7 +88,7 @@ In my experience, the best way to use sub-agents is to enforce **separation of c
 2.  **Build Validator:** Responsible for fixing a broken build. The main agent can invoke it when a task involving code changes is complete.
 3.  **Research Agent:** Responsible for researching topics. It can be invoked when the main agent needs more information, allowing it to search the web, read articles, and summarize information.
 
-![build validator agent](/assets/images/sub_agent_action.png)
+![build validator agent]({{ "/assets/images/sub_agent_action.png" | relative_url }})
 
 In the example above, the `build-validator` agent runs with a **fresh context** to fix build errors, making it more effective than if the main agent tried to fix the errors with a polluted context. While it might sound reasonable for the main agent to fix the errors, having a sub-agent address the problem with a fresh perspective often leads to a cleaner solution because it's not burdened by the prior conversation context.
 

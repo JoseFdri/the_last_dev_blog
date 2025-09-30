@@ -18,10 +18,12 @@ bundle install
 ### Run Development Server
 
 ```bash
-bundle exec jekyll serve
+bundle exec jekyll serve --baseurl ""
 ```
 
 The site will be available at `http://localhost:4000` with auto-regeneration enabled.
+
+**Note:** The `--baseurl ""` flag is required for local development since the site is configured with `baseurl: "the_last_dev_blog"` for GitHub Pages deployment.
 
 ### Build Site
 
