@@ -1,0 +1,21 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" rx="4" fill="#0f111a"/>
+
+  <!-- Terminal window accent -->
+  <rect x="2" y="2" width="28" height="28" rx="3" fill="#1a1d29" stroke="#2a2e3e" stroke-width="1"/>
+
+  <!-- Terminal header dots -->
+  <circle cx="6" cy="8" r="1.5" fill="#f59e0b"/>
+  <circle cx="10" cy="8" r="1.5" fill="#10b981"/>
+  <circle cx="14" cy="8" r="1.5" fill="#06b6d4"/>
+
+  <!-- Prompt symbol -->
+  <text x="6" y="20" font-family="monospace" font-size="10" font-weight="600" fill="#10b981">$</text>
+
+  <!-- Cursor -->
+  <rect x="12" y="14" width="8" height="2" fill="#06b6d4"/>
+
+  <!-- Terminal line -->
+  <rect x="6" y="24" width="20" height="1" fill="#2a2e3e"/>
+</svg>

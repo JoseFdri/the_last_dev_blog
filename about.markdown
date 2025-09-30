@@ -6,11 +6,13 @@ permalink: /about/
 
 ## $ whoami
 
-Software Engineer based in Auckland, New Zealand. Full stack software engineer with a proven track record of designing scalable architectures, identity providers, optimizing engineering workflows, and leading teams to deliver high-quality solutions.
+**My purpose for coding is simple: to make exceptional products.**
 
-I'm passionate about using AI to do more with less time and love building products and developer tools. One of the tools I created is [cooljsontools.dev](https://cooljsontools.dev) - check it out!
+I'm a software engineer specializing in **developer productivity** and tooling. I believe that a happy developer makes a better product, so I focus on architecting the systems that **remove friction** and allow engineering teams to deliver high-quality features, faster.
 
+My background spans **full-stack development, AWS infrastructure**, and leading projects from concept to production. I've established engineering standards, championed practices like trunk-based development, and mentored teams—all with a single goal: making it incredibly easy for developers to ship great products.
 
+**I see myself as a force multiplier.** By improving the developer experience, I accelerate the entire organization and ensure our collective energy goes into what matters most: **creating value for the end user.**
 
 ## $ echo $CONTACT
 
@@ -19,12 +21,6 @@ Feel free to reach out:
 - **LinkedIn**: [jose-rodriguez-g](https://www.linkedin.com/in/jose-rodriguez-g/)
 - **X/Twitter**: [@jrodriguexg](https://x.com/jrodriguexg)
 - **Email**: josefernaguillen@gmail.com
-
-## $ tail philosophy.log
-
-> "AI isn't here to replace developers - it's here to augment our capabilities."
-
-Currently exploring how AI can revolutionize software development workflows, building tools that enhance developer productivity, and sharing insights on scaling systems that serve hundreds of thousands of users.
 
 ```bash
 $ exit

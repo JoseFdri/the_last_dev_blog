@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Jekyll static site blog using the Minima theme. Jekyll is a Ruby-based static site generator that transforms Markdown files into a complete website.
+This is "The Last Dev Blog" - a Jekyll static site blog focused on building the tools that build the products. The site uses custom layouts and styles rather than a pre-built theme.
+
+Jekyll is a Ruby-based static site generator that transforms Markdown files into a complete website.
 
 ## Development Commands
 
@@ -26,13 +28,26 @@ bundle install
 
 ## Project Structure
 
-- `_posts/`: Blog posts in format `YYYY-MM-DD-title.markdown`
+- `_posts/`: Blog posts in format `YYYY-MM-DD-title.md` or `.markdown`
+- `_layouts/`: Custom layout templates (default.html, home.html, page.html, post.html)
+- `_includes/`: Reusable HTML components
 - `_site/`: Generated static site (do not edit directly)
+- `assets/`: Static assets including images and custom CSS
+  - `assets/css/main.scss`: Custom styling
+  - `assets/images/`: Blog post images and diagrams
 - `_config.yml`: Main Jekyll configuration
+- Favicon files: Multiple sizes (16x16, 32x32, 96x96, SVG) and platform-specific icons
 - Posts require front matter with `layout`, `title`, `date`, and `categories`
 
 ## Key Configuration
 
-- Theme: minima 2.5
+- Site title: The Last Dev Blog
+- Custom layouts (not using minima theme)
 - Jekyll version: 4.4.1
 - Plugins: jekyll-feed
+- Social links configured: Twitter (@jrodriguexg), GitHub (JoseFdri), LinkedIn (jose-rodriguez-g)
+
+## Content
+
+Current blog posts focus on:
+- Agentic coding and AI-assisted development workflows
