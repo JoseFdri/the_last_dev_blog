@@ -22,7 +22,7 @@ title: The Last Dev Blog
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Building the tools that build the products.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "the_last_dev_blog" # the subpath of your site, e.g. /blog
 url: "https://josefdri.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jrodriguexg
 github_username:  JoseFdri
