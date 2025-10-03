@@ -6,7 +6,7 @@ categories: AI
 author: Jose Rodriguez
 ---
 
-# AI is Here to Augment Developers, Not Replace Them
+# AI Context Engineering - AI is Here to Augment Developers, Not Replace Them
 
 Since OpenAI released ChatGPT, the technology landscape has been flooded with new AI products. Software engineers are key customers for most companies developing Large Language Models (LLMs), so the idea that AI will eliminate software engineers is not pragmatic when we look at the reality of the industry and the coding tools we now have.
 
