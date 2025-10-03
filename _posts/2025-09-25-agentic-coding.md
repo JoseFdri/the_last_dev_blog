@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The New Coding Era: Agentic Coding"
+title:  "AI Context Engineering"
 date:   2025-10-01 00:00:00 +1300
 categories: AI
 author: Jose Rodriguez
