@@ -6,7 +6,7 @@ permalink: /about/
 
 ## $ whoami
 
-<img src="/assets/images/me.jpeg" alt="Jose Rodriguez" style="width: 220px; height: 220px; border-radius: 16px; object-fit: cover; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); float: right; margin-left: 2.5rem; margin-bottom: 2rem;">
+<img src="{{ "/assets/images/me.jpeg" | relative_url }}" alt="Jose Rodriguez" style="width: 220px; height: 220px; border-radius: 16px; object-fit: cover; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); float: right; margin-left: 2.5rem; margin-bottom: 2rem;">
 
 **My purpose for coding is simple: to make exceptional products.**
 
