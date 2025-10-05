@@ -5,8 +5,9 @@ layout: default
 <div class="home">
     <h1 class="page-heading">Recent Posts</h1>
 
-    {% if site.posts.size > 0 %}
-    <div class="posts-list">
+    <div class="home-layout">
+        {% if site.posts.size > 0 %}
+        <div class="posts-list">
         {% for post in site.posts %}
         <article class="post-item">
             <header>
@@ -30,10 +31,25 @@ layout: default
             {% endif %}
         </article>
         {% endfor %}
+        </div>
+        {% else %}
+        <p class="no-posts">No posts yet. Check back soon!</p>
+        {% endif %}
+
+        <!-- Book a Call Banner (Sidebar) -->
+        <aside class="cta-banner">
+            <div class="banner-content">
+                <div class="photo-container">
+                    <img src="{{ '/assets/images/me.jpeg' | relative_url }}" alt="Profile Photo" class="profile-photo">
+                </div>
+                <h2 class="banner-title">Need Guidance?</h2>
+                <p class="banner-text">I offer personalized mentorship to help you level up your development skills, navigate technical challenges, and accelerate your career growth.</p>
+                <a href="https://calendly.com/josefernaguillen/30min" class="cta-button">
+                    <span class="prompt-symbol">$</span> Book Mentorship
+                </a>
+            </div>
+        </aside>
     </div>
-    {% else %}
-    <p class="no-posts">No posts yet. Check back soon!</p>
-    {% endif %}
 
     {% if site.paginate %}
     <nav class="pagination">
