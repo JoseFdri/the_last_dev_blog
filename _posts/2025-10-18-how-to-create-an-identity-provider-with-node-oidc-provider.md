@@ -104,9 +104,9 @@ const configuration = {
 
 const oidc = new Provider(issuer, configuration);
 
-app.use('/oidc', oidc.callback());
+app.use('/', oidc.callback());
 
-oidc.listen(port, () => {
+app.listen(port, () => {
   console.log(`oidc-provider listening on port ${port}, check ${issuer}/.well-known/openid-configuration`);
 });
 ```
@@ -156,21 +156,105 @@ This command sends a POST request to the registration endpoint with the client's
 
 When a user tries to log in, the OIDC provider will redirect them to an interaction URL. We need to handle this interaction and authenticate the user. For this example, we will automatically log in the user.
 
+Add this middleware **before** mounting the OIDC callback:
+
 ```javascript
 app.use(async (req, res, next) => {
-  const details = await oidc.interactionDetails(req, res);
-  const { uid, prompt, params } = details;
+  try {
+    const details = await oidc.interactionDetails(req, res);
+    const { uid, prompt, params } = details;
 
-  if (prompt.name === 'login') {
-    const result = {
-      login: {
-        accountId: 'user1',
-      },
-    };
-    await oidc.interactionFinished(req, res, result, { mergeWithLastSubmission: false });
-  } else {
+    if (prompt.name === 'login') {
+      const result = {
+        login: {
+          accountId: 'user1',
+        },
+      };
+      await oidc.interactionFinished(req, res, result, { mergeWithLastSubmission: false });
+    } else {
+      next();
+    }
+  } catch (err) {
     next();
   }
+});
+
+// Mount OIDC after interaction middleware
+app.use('/', oidc.callback());
+```
+
+### Complete IdP Code
+
+Here's the complete `index.js` file for the IdP with all the pieces integrated:
+
+```javascript
+import express from 'express';
+import { Provider } from 'oidc-provider';
+
+const app = express();
+const port = 3000;
+const issuer = `http://localhost:${port}`;
+
+const configuration = {
+  clients: [
+    {
+      client_id: 'my-app',
+      client_secret: 'my-secret',
+      redirect_uris: ['http://localhost:3001/cb'],
+      response_types: ['code'],
+      grant_types: ['authorization_code'],
+    },
+  ],
+  pkce: {
+    required: () => true,
+    methods: ['S256'],
+  },
+  findAccount: async (ctx, id) => {
+    const users = [
+      {
+        accountId: 'user1',
+        claims: (use, scope, claims, rejected) => {
+          return {
+            sub: 'user1',
+            email: 'user1@example.com',
+            email_verified: true,
+          };
+        },
+      },
+    ];
+
+    const user = users.find((user) => user.accountId === id);
+    return user || undefined;
+  },
+};
+
+const oidc = new Provider(issuer, configuration);
+
+// Handle interaction before mounting OIDC
+app.use(async (req, res, next) => {
+  try {
+    const details = await oidc.interactionDetails(req, res);
+    const { uid, prompt, params } = details;
+
+    if (prompt.name === 'login') {
+      const result = {
+        login: {
+          accountId: 'user1',
+        },
+      };
+      await oidc.interactionFinished(req, res, result, { mergeWithLastSubmission: false });
+    } else {
+      next();
+    }
+  } catch (err) {
+    next();
+  }
+});
+
+app.use('/', oidc.callback());
+
+app.listen(port, () => {
+  console.log(`oidc-provider listening on port ${port}, check ${issuer}/.well-known/openid-configuration`);
 });
 ```
 
@@ -189,13 +273,30 @@ npm init -y
 npm install express openid-client
 ```
 
+Just like the IdP, the client application uses ES modules, so add `"type": "module"` to your `package.json`:
+
+```json
+{
+  "name": "my-client-app",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "openid-client": "^5.6.1"
+  }
+}
+```
+
 ### Client Application Code
 
 Now, let's create an `index.js` file with the following content:
 
 ```javascript
 import express from 'express';
-import { Issuer } from 'openid-client';
+import { Issuer, generators } from 'openid-client';
 
 const app = express();
 const port = 3001;
@@ -209,22 +310,50 @@ const client = new oidcIssuer.Client({
   response_types: ['code'],
 });
 
+// Store code verifiers temporarily (in production, use proper session management)
+const codeVerifiers = new Map();
+
 app.get('/', (req, res) => {
   res.send('<a href="/login">Log in</a>');
 });
 
 app.get('/login', (req, res) => {
+  const code_verifier = generators.codeVerifier();
+  const code_challenge = generators.codeChallenge(code_verifier);
+  const state = generators.state();
+
+  // Store code verifier for later use (in production, use sessions)
+  codeVerifiers.set(state, code_verifier);
+
   const url = client.authorizationUrl({
     scope: 'openid email profile',
+    code_challenge,
+    code_challenge_method: 'S256',
+    state,
   });
+
   res.redirect(url);
 });
 
 app.get('/cb', async (req, res) => {
-  const params = client.callbackParams(req);
-  const tokenSet = await client.callback('http://localhost:3001/cb', params);
-  const userInfo = await client.userinfo(tokenSet.access_token);
-  res.send(userInfo);
+  try {
+    const params = client.callbackParams(req);
+    const code_verifier = codeVerifiers.get(params.state);
+
+    if (!code_verifier) {
+      return res.status(400).send('Invalid state parameter');
+    }
+
+    const tokenSet = await client.callback('http://localhost:3001/cb', params, { code_verifier });
+
+    // Clean up stored code verifier
+    codeVerifiers.delete(params.state);
+
+    const userInfo = await client.userinfo(tokenSet.access_token);
+    res.json(userInfo);
+  } catch (err) {
+    res.status(500).send(`Authentication error: ${err.message}`);
+  }
 });
 
 app.listen(port, () => {
@@ -246,4 +375,4 @@ Now that we have our IdP and our client application, let's see how the authentic
 
 ## Conclusion
 
-In this article, we have learned how to create a basic Identity Provider using `node-oidc-provider`. We have seen how to configure PKCE, register clients, and authenticate users. We have also created a simple client application to test our IdP. This is just a starting point. `node-oidc-provider` is a very powerful and flexible library that allows you to customize every aspect of your IdP.
+In this guide, we have learned how to create a basic Identity Provider using `node-oidc-provider`. We have seen how to configure PKCE, register clients, and authenticate users. We have also created a simple client application to test our IdP. This is just a starting point. `node-oidc-provider` is a very powerful and flexible library that allows you to customize every aspect of your IdP.
