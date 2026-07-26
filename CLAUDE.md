@@ -51,3 +51,11 @@ bundle install
 
 Current blog posts focus on:
 - Agentic coding and AI-assisted development workflows
+
+## Audience
+
+The canonical reader/buyer persona for this blog and its Substack lives in the user-level `audience-profiles` skill (`~/.claude/skills/audience-profiles/`). Use it when writing content, marketing, offers, pricing, or product decisions — it defines who we write and build for (a founder-CTO "builder-decision-maker" who wants compressed judgment, not more information) and the Five Lenses to pressure-test work against.
+
+## Writing voice
+
+The author's writing voice is captured in the user-level `voice-dna-*` skills (`~/.claude/skills/`): `voice-dna-core` (foundation), plus `voice-dna-intros`, `voice-dna-endings`, and `voice-dna-howto` for specific sections. When drafting or editing any post in the author's voice, load `voice-dna-core` plus the section skill for the part being written. Key hard rules: no emojis, no em dashes, no bookish/corporate words, short paragraphs, bold for emphasis, casual but grammatically correct English, minimal code unless purely technical.
