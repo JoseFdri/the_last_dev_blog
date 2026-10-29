@@ -22,7 +22,7 @@ Feel free to reach out:
 - **GitHub**: [@JoseFdri](https://github.com/JoseFdri)
 - **LinkedIn**: [jose-rodriguez-g](https://www.linkedin.com/in/jose-rodriguez-g/)
 - **X/Twitter**: [@jrodriguexg](https://x.com/jrodriguexg)
-- **Email**: josefernaguillen@gmail.com
+- **Email**: josefr.dev@gmail.com
 
 ```bash
 $ exit

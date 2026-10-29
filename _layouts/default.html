@@ -36,9 +36,6 @@
                         <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ "/" | relative_url }}">~/home</a>
                         <a class="nav-link {% if page.url == '/about/' %}active{% endif %}" href="{{ "/about" | relative_url }}">~/about</a>
                         <a class="nav-link" href="{{ site.github_username | prepend: "https://github.com/" }}">~/github</a>
-                        {% if site.twitter_username %}
-                        <a class="nav-link" href="{{ site.twitter_username | prepend: "https://twitter.com/" }}">~/twitter</a>
-                        {% endif %}
                         {% if site.linkedin_username %}
                         <a class="nav-link" href="{{ site.linkedin_username | prepend: "https://www.linkedin.com/in/" }}">~/linkedin</a>
                         {% endif %}
