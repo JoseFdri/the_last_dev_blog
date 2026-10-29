@@ -65,10 +65,9 @@ categories: category-name
 
 - Site uses custom layouts (no pre-built theme)
 - Plugins: jekyll-feed
-- Social links: Twitter, GitHub, LinkedIn
+- Social links: GitHub, LinkedIn
 
 ## Contact
 
-- Twitter: [@jrodriguexg](https://twitter.com/jrodriguexg)
 - GitHub: [JoseFdri](https://github.com/JoseFdri)
 - LinkedIn: [jose-rodriguez-g](https://linkedin.com/in/jose-rodriguez-g)

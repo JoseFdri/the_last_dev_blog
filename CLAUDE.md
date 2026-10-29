@@ -45,7 +45,7 @@ bundle install
 - Custom layouts (not using minima theme)
 - Jekyll version: 4.4.1
 - Plugins: jekyll-feed
-- Social links configured: Twitter (@jrodriguexg), GitHub (JoseFdri), LinkedIn (jose-rodriguez-g)
+- Social links configured: GitHub (JoseFdri), LinkedIn (jose-rodriguez-g)
 
 ## Content
 
